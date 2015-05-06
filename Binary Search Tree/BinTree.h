@@ -33,4 +33,5 @@ public:
 	void printPostOrder();
 };
 
+#include "BinTree.cpp"
 #endif

@@ -84,6 +84,12 @@ void BinTree<ItemType>::remove(const ItemType& data)
 	{
 		myRoot->remove(data);
 	}
+
+	if (myRoot->left == nullptr && myRoot->right == nullptr && myRoot->item == data)
+	{
+		delete myRoot;
+		myRoot = nullptr;
+	}
 }
 
 //search

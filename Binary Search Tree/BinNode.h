@@ -34,4 +34,5 @@ public:
 	void printPostOrder() const;
 };
 
+#include "BinNode.cpp"
 #endif
