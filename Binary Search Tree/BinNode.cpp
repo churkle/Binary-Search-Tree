@@ -61,7 +61,6 @@ const BinNode<ItemType>& BinNode<ItemType>::operator =(const BinNode<ItemType>& 
 template <typename ItemType>
 void BinNode<ItemType>::insert(const ItemType & data)
 {
-
 	if (data < item)
 	{
 		if (left != nullptr)
@@ -77,7 +76,7 @@ void BinNode<ItemType>::insert(const ItemType & data)
 	{
 		if (right != nullptr)
 		{
-			left->insert(data);
+			right->insert(data);
 		}
 		else
 		{
@@ -89,7 +88,7 @@ void BinNode<ItemType>::insert(const ItemType & data)
 //findSuccessor
 //Finds the node that is next largest after the node it's called on
 template <typename ItemType>
-BinNodePtr BinNode<ItemType>::findSuccessor() const
+BinNode<ItemType>* BinNode<ItemType>::findSuccessor() const
 {
 	if (right != nullptr)
 	{
@@ -107,7 +106,7 @@ BinNodePtr BinNode<ItemType>::findSuccessor() const
 //Pre: data is a valid item to remove from sub-tree
 //Post: Node containing data removed from sub-tree, returns successor or nullptr if there is no successor or removal
 template <typename ItemType>
-BinNodePtr BinNode<ItemType>::remove(const ItemType& data)
+BinNode<ItemType>* BinNode<ItemType>::remove(const ItemType& data) const
 {
 	if (data < item)
 	{
@@ -197,7 +196,7 @@ BinNodePtr BinNode<ItemType>::remove(const ItemType& data)
 //Pre: data is a valid item to search in sub-tree
 //Post: True is returned if node containing data exists in sub-tree, false is returned otherwise
 template <typename ItemType>
-bool BinNode<ItemType>::search(const ItemType& data)
+bool BinNode<ItemType>::search(const ItemType& data) const
 {
 	if (data == item)
 	{
@@ -258,12 +257,12 @@ void BinNode<ItemType>::printPreOrder() const
 
 	if (left != nullptr)
 	{
-		left->printInOrder();
+		left->printPreOrder();
 	}
 
 	if (right != nullptr)
 	{
-		right->printInOrder();
+		right->printPreOrder();
 	}
 }
 
@@ -275,12 +274,12 @@ void BinNode<ItemType>::printPostOrder() const
 {
 	if (left != nullptr)
 	{
-		left->printInOrder();
+		left->printPostOrder();
 	}
 
 	if (right != nullptr)
 	{
-		right->printInOrder();
+		right->printPostOrder();
 	}
 
 	cout << item << " ";
